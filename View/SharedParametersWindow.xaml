@@ -1,0 +1,77 @@
+﻿<Window x:Class="AddSharedParametersToFamilies.SharedParametersWindow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:local="clr-namespace:AddSharedParametersToFamilies"
+             mc:Ignorable="d" 
+             Title="Общие параметры" 
+             SizeToContent="Height"
+             Width="275"
+             ResizeMode="NoResize"
+             WindowStartupLocation="CenterScreen"
+             KeyDown="Window_KeyDown">
+
+    <Window.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="Margin" Value="3, 0, 0, 0" />
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Margin" Value="3, 2, 0, 0" />
+            <Setter Property="Height" Value="20" />
+        </Style>
+        <Style TargetType="ComboBox">
+            <Setter Property="Margin" Value="3, 2, 3, 4" />
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="Width" Value="80" />
+            <Setter Property="Height" Value="22" />
+            <Setter Property="Margin" Value="5, 5, 0, 0" />
+        </Style>
+        <Style TargetType="RadioButton">
+            <Setter Property="Margin" Value="5" />
+        </Style>
+    </Window.Resources>
+    <Border BorderThickness="5">
+        <StackPanel>
+
+            <TextBlock Text="Выберите группу и параметр в ней."
+                       Margin="3, 0, 0, 20"/>
+
+            <TextBlock Text="Группа параметров:" />
+
+            <ComboBox ItemsSource="{Binding GroupsOfSharedParameters}"
+                      SelectedItem="{Binding SelectedGroupOfSharedParameters}">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="SelectionChanged">
+                        <i:InvokeCommandAction Command="{Binding cmbSelectionChanged}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </ComboBox>
+
+            <TextBlock Text="Параметры:" />
+
+            <ListBox ItemsSource="{Binding ListOfSharedParameters}"
+                     SelectedItem="{Binding SelectedSharedParameter}"
+                     DisplayMemberPath="Name"
+                     Height="220"
+                     Margin="3, 0, 3, 0"
+                     ScrollViewer.VerticalScrollBarVisibility="Visible"
+                     ScrollViewer.HorizontalScrollBarVisibility="Hidden"/>
+
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Right"
+                        Margin="0, 0, 3, 0">
+
+                <Button Content="ОК"
+                        Command="{Binding btnOk}" />
+
+                <Button Content="Отмена" 
+                        Command="{Binding btnClose}"/>
+
+            </StackPanel>
+
+        </StackPanel>
+    </Border>
+</Window>

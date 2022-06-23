@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4C694A00-CDB4-4DD8-AB6E-446E1DB5E00C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AddSharedParametersToFamilies</RootNamespace>
+    <AssemblyName>AddSharedParametersToFamilies</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AdWindows, Version=2018.11.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\ModPlus.Revit.API.2020.3.0.0\lib\AdWindows.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus, Version=4.5.3.3, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>packages\EPPlus.4.5.3.3\lib\net40\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Expression.Interactions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\Microsoft.Expression.Interactions.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="RevitAPI, Version=20.0.0.0, Culture=neutral, processorArchitecture=AMD64">
+      <HintPath>packages\ModPlus.Revit.API.2020.3.0.0\lib\RevitAPI.dll</HintPath>
+    </Reference>
+    <Reference Include="RevitAPIIFC, Version=20.0.0.0, Culture=neutral, processorArchitecture=AMD64">
+      <HintPath>packages\ModPlus.Revit.API.2020.3.0.0\lib\RevitAPIIFC.dll</HintPath>
+    </Reference>
+    <Reference Include="RevitAPIUI, Version=20.0.0.0, Culture=neutral, processorArchitecture=AMD64">
+      <HintPath>packages\ModPlus.Revit.API.2020.3.0.0\lib\RevitAPIUI.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UIFramework, Version=20.0.0.0, Culture=neutral, processorArchitecture=AMD64">
+      <HintPath>packages\ModPlus.Revit.API.2020.3.0.0\lib\UIFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="Xceed.Wpf.AvalonDock, Version=2.0.19.10, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>packages\ModPlus.Revit.API.2020.3.0.0\lib\Xceed.Wpf.AvalonDock.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Model\ParametersForReplacingModel.cs" />
+    <Compile Include="Service\MainWindowModelService\AddParameters\FamilyDocumentsForAditing.cs" />
+    <Compile Include="Service\MainWindowModelService\AddParameters\SharedParametersForAdding.cs" />
+    <Compile Include="Service\MainWindowModelService\AddParameters\SharedParametersSets.cs" />
+    <Compile Include="Service\MainWindowModelService\ReplaceParameters\ParametersForReplacing.cs" />
+    <Compile Include="Service\MainWindowModelService\ReplaceParameters\ParametersPairsSets.cs" />
+    <Compile Include="ViewModel\InputSetNameWindowViewModel.cs" />
+    <Compile Include="ViewModel\MainWindowViewModel\ReplaceParameters\FamilyDocumentsForReplacing.cs" />
+    <Compile Include="ViewModel\MainWindowViewModel\ReplaceParameters\ParametersForReplacing.cs" />
+    <Compile Include="ViewModel\MainWindowViewModel\ReplaceParameters\ParametersPairsSets.cs" />
+    <Compile Include="View\InputSetNameWindow.xaml.cs">
+      <DependentUpon>InputSetNameWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Model\FamilyDocumentModel.cs" />
+    <Compile Include="Helpers\BuiltInParameterGroupRus.cs" />
+    <Compile Include="Helpers\ParameterTypeRus.cs" />
+    <Compile Include="Service\SharedParametersWindowModelService.cs" />
+    <Compile Include="Helpers\UnitGroupRus.cs" />
+    <Compile Include="ViewModel\MainWindowViewModel\AddParameters\SharedParametersSets.cs" />
+    <Compile Include="ViewModel\MainWindowViewModel\AddParameters\FamilyDocumentsForAditing.cs" />
+    <Compile Include="Service\MainWindowModelService\Main.cs" />
+    <Compile Include="View\SharedParametersWindow.xaml.cs">
+      <DependentUpon>SharedParametersWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ParameterPropertiesWindow.xaml.cs">
+      <DependentUpon>ParameterPropertiesWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\Json.cs" />
+    <Compile Include="ViewModel\MainWindowViewModel\AddParameters\SharedParametersForAdding.cs" />
+    <Compile Include="ViewModel\MainWindowViewModel\Main.cs" />
+    <Compile Include="Model\SharedParameterModel.cs" />
+    <Compile Include="BaseClasses\ModelBase.cs" />
+    <Compile Include="BaseClasses\RelayCommand.cs" />
+    <Compile Include="BaseClasses\RevitEvent.cs" />
+    <Compile Include="View\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Launch.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\ParameterPropertiesWindowViewModel.cs" />
+    <Compile Include="ViewModel\SharedParametersWindowViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Page Include="View\InputSetNameWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SharedParametersWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ParameterPropertiesWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
